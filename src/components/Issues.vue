@@ -19,13 +19,16 @@
 
 <script>
 import Pagination from './Pagination.vue'
+import Provider from '../mixins/Provider.js'
 
 export default {
   name: 'issues',
   components: {
-
     Pagination
   },
+  mixins: [
+    Provider
+  ],
   data: function () {
     return {
       examples: [
@@ -51,14 +54,12 @@ export default {
     },
     getIssues (issuesUrl) {
       if (!issuesUrl) return
-      fetch(issuesUrl)
+
+      this.api.get(issuesUrl)
         .then(response => {
-          this.linkHeader = response.headers.get('link')
+          this.linkHeader = response.headers['link']
           this.links = this.getLinks(this.linkHeader)
-          return response.json()
-        })
-        .then(data => {
-          this.issues = data
+          this.issues = response.data
         })
     }
   }
