@@ -1,6 +1,20 @@
 <template>
   <div>
     <h1>Issues</h1>
+
+    <div>
+      <h2>Login</h2>
+
+      <div>
+        <button v-for="provider of providers" :key="provider" @click="setProvider(provider)">{{ provider }}</button>
+      </div>
+
+      <div>
+        <input tabindex="2" v-model="providerToken" v-on:keyup.enter="signin">
+        <input tabindex="1" v-model="providerURL" v-on:keyup.enter="signin" v-bind:disabled="provider != 'gitlab'">
+      </div>
+    </div>
+
     <div v-for="example of examples" :key="example">
       <a href="#" v-on:click="getIssues(example)">{{ example }}</a>
     </div>
@@ -32,9 +46,14 @@ export default {
   data: function () {
     return {
       examples: [
+        '/issues',
         'https://gitlab.com/api/v4/projects/10997765/issues',
         'https://api.github.com/repos/angular/angular/issues',
         'https://api.github.com/repos/angular/angular/issues?per_page=10'
+      ],
+      providers: [
+        'gitlab',
+        'github'
       ],
       linkHeader: null,
       links: null,
@@ -42,6 +61,9 @@ export default {
     }
   },
   methods: {
+    setProvider (provider) {
+      this.provider = provider
+    },
     getLinks (linkHeader) {
       let re = /<(\S*)>;[\s]*rel="([a-z]+)"/g
       let arrRes = []

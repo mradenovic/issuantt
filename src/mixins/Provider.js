@@ -20,7 +20,8 @@ export default {
       }
     },
     headers () {
-      if (!this.token) {
+      console.log('headers in')
+      if (!this.providerToken) {
         return null
       }
 
