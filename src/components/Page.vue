@@ -22,7 +22,7 @@ import Pagination from './Pagination.vue'
 import Provider from '../mixins/Provider.js'
 
 export default {
-  name: 'issues',
+  name: 'page',
   components: {
     Pagination
   },
