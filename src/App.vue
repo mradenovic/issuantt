@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import 'font-awesome/css/font-awesome.css'
+
 import Page from './components/Page.vue'
 
 export default {

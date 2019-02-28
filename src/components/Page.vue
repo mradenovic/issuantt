@@ -6,7 +6,7 @@
       <h2>Login</h2>
 
       <div>
-        <button v-for="provider of providers" :key="provider" @click="setProvider(provider)">{{ provider }}</button>
+        <button v-for="provider of providers" :key="provider" @click="setProvider(provider)"> <i :class="['fa fa-' + provider]"></i> {{ provider }}</button>
       </div>
 
       <div>
