@@ -1,33 +1,54 @@
 <template>
   <div>
-    <h1>Issues</h1>
-
-    <div>
-      <h2>Login</h2>
-
-      <div>
-        <button v-for="provider of providers" :key="provider" @click="setProvider(provider)"> <i :class="['fa fa-' + provider]"></i> {{ provider }}</button>
+    <section class="section">
+      <div class="container">
+        <h1 class="title">
+          Issues
+        </h1>
       </div>
 
-      <div>
-        <input tabindex="2" v-model="providerToken" v-on:keyup.enter="signin">
-        <input tabindex="1" v-model="providerURL" v-on:keyup.enter="signin" v-bind:disabled="provider != 'gitlab'">
+      <nav class="level">
+        <!-- Left side -->
+        <div class="level-left">
+          <div class="level-item" v-for="p of providers" :key="p">
+            <div>
+              <button class="button is-rounded is-info" :class="{'is-inverted': p !== provider}" @click="setProvider(p)">
+                <i :class="['fa fa-' + p]"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="level-item">
+            <input placeholder="Private token" class="input" tabindex="2" v-model="providerToken" v-on:keyup.enter="signin">
+          </div>
+
+          <div class="level-item">
+            <input placeholder="Custom address" class="input" tabindex="1" v-model="providerURL" v-on:keyup.enter="signin" v-bind:disabled="provider != 'gitlab'">
+          </div>
+        </div>
+
+        <!-- Right side -->
+        <div class="level-right">
+          <p class="level-item"><a class="button is-info">Sign In</a></p>
+        </div>
+      </nav>
+    </section>
+
+    <section class="section">
+      <div v-for="example of examples" :key="example">
+        <a href="#" v-on:click="getIssues(example)">{{ example }}</a>
       </div>
-    </div>
 
-    <div v-for="example of examples" :key="example">
-      <a href="#" v-on:click="getIssues(example)">{{ example }}</a>
-    </div>
+      <div v-if="issues && issues.length">
+        <pagination v-bind:links="links" v-on:pagination-click="getIssues"></pagination>
 
-    <div v-if="issues && issues.length">
-      <pagination v-bind:links="links" v-on:pagination-click="getIssues"></pagination>
+        <div v-for="issue of issues" v-bind:key="issue.id">
+          {{ issue.number || issue.iid }} {{ issue.title }} {{ issue.state }}
+        </div>
 
-      <div v-for="issue of issues" v-bind:key="issue.id">
-        {{ issue.number || issue.iid }} {{ issue.title }} {{ issue.state }}
+        <pagination v-bind:links="links" v-on:pagination-click="getIssues"></pagination>
       </div>
-
-      <pagination v-bind:links="links" v-on:pagination-click="getIssues"></pagination>
-    </div>
+    </section>
   </div>
 </template>
 
