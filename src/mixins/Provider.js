@@ -3,6 +3,8 @@ import axios from 'axios'
 export default {
   data: function () {
     return {
+      user: null,
+      api: axios,
       providerURL: 'https://gitlab.com',
       provider: 'gitlab',
       providerToken: null
@@ -34,7 +36,7 @@ export default {
           return null
       }
     },
-    api () {
+    config () {
       const config = {
         baseURL: this.baseURL
       }
@@ -43,9 +45,20 @@ export default {
         config['headers'] = this.headers
       }
 
-      return axios.create(config)
+      return config
+    }
+  },
+  watch: {
+    config: function (value) {
+      this.api = axios.create(value)
     }
   },
   methods: {
+    signIn () {
+      this.api.get('/user')
+        .then(response => {
+          this.user = response.data
+        })
+    }
   }
 }

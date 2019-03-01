@@ -29,7 +29,7 @@
 
         <!-- Right side -->
         <div class="level-right">
-          <p class="level-item"><a class="button is-info">Sign In</a></p>
+          <p class="level-item"><a class="button is-info" @click="signIn">Sign In</a></p>
         </div>
       </nav>
     </section>
