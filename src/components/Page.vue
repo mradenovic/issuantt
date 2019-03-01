@@ -7,6 +7,35 @@
         </h1>
       </div>
 
+      <nav class="level is-mobile" v-if="user">
+        <!-- Left side -->
+        <div class="level-left">
+          <div class="level-item">
+            <figure class="image is-32x32">
+              <a :href="user.web_url || user.html_url">
+                <img class="is-rounded" v-bind:src="user.avatar_url">
+              </a>
+            </figure>
+          </div>
+
+          <div class="level-item">
+            <span>{{ user.name }}</span>
+          </div>
+        </div>
+
+        <!-- Right side -->
+        <div class="level-right">
+          <div class="level-item">
+            <a class="button is-info">
+              <span>Sign Out</span>
+              <span class="icon">
+                <i :class="['fa fa-' + provider]"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+      </nav>
+
       <nav class="level">
         <!-- Left side -->
         <div class="level-left">
