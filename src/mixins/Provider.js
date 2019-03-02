@@ -41,10 +41,6 @@ export default {
         baseURL: this.baseURL
       }
 
-      if (this.headers) {
-        config['headers'] = this.headers
-      }
-
       return config
     }
   },
@@ -55,10 +51,19 @@ export default {
   },
   methods: {
     signIn () {
+      if (this.headers) {
+        this.config['headers'] = this.headers
+      }
+
+      this.api = axios.create(this.config)
       this.api.get('/user')
         .then(response => {
           this.user = response.data
         })
+    },
+    signOut () {
+      delete this.config.headers
+      this.user = null
     }
   }
 }

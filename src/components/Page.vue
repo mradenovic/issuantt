@@ -26,7 +26,7 @@
         <!-- Right side -->
         <div class="level-right">
           <div class="level-item">
-            <a class="button is-info">
+            <a class="button is-info" @click="signOut">
               <span>Sign Out</span>
               <span class="icon">
                 <i :class="['fa fa-' + provider]"></i>
@@ -36,7 +36,7 @@
         </div>
       </nav>
 
-      <nav class="level">
+      <nav class="level" v-if="!user">
         <!-- Left side -->
         <div class="level-left">
           <div class="level-item" v-for="p of providers" :key="p">
