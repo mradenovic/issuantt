@@ -122,6 +122,14 @@ export default {
       while ((arrRes = re.exec(linkHeader)) !== null) {
         links[arrRes[2]] = arrRes[1]
       }
+
+      // remove redundant links
+      if (!links.prev) {
+        delete links.first
+      }
+      if (!links.next) {
+        delete links.last
+      }
       return links
     },
     getIssues (issuesUrl) {
