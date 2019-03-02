@@ -48,11 +48,11 @@
           </div>
 
           <div class="level-item">
-            <input placeholder="Private token" class="input" tabindex="2" v-model="providerToken" v-on:keyup.enter="signin">
+            <input placeholder="Private token" class="input" tabindex="2" v-model="providerToken" v-on:keyup.enter="signIn">
           </div>
 
           <div class="level-item">
-            <input placeholder="Custom address" class="input" tabindex="1" v-model="providerURL" v-on:keyup.enter="signin" v-bind:disabled="provider != 'gitlab'">
+            <input placeholder="Custom address" class="input" tabindex="1" v-model="providerURL" v-on:keyup.enter="signIn" v-bind:disabled="provider != 'gitlab'">
           </div>
         </div>
 
