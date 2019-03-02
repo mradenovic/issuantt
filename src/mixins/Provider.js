@@ -22,7 +22,6 @@ export default {
       }
     },
     headers () {
-      console.log('headers in')
       if (!this.providerToken) {
         return null
       }
