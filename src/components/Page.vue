@@ -34,7 +34,6 @@
 import Pagination from './Pagination.vue'
 import SignIn from './SignIn.vue'
 import SignOut from './SignOut.vue'
-import Provider from '../mixins/Provider.js'
 
 export default {
   name: 'page',
@@ -43,9 +42,6 @@ export default {
     SignOut,
     Pagination
   },
-  mixins: [
-    Provider
-  ],
   data: function () {
     return {
       examples: [
@@ -63,6 +59,11 @@ export default {
       linkHeader: null,
       links: null,
       issues: []
+    }
+  },
+  computed: {
+    api () {
+      return this.$store.state.api
     }
   },
   methods: {
