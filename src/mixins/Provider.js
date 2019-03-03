@@ -1,68 +1,42 @@
-import axios from 'axios'
+import { mapState, mapActions } from 'vuex'
 
 export default {
-  data: function () {
-    return {
-      user: null,
-      api: axios,
-      providerURL: 'https://gitlab.com',
-      provider: 'gitlab',
-      providerToken: null
-    }
-  },
   computed: {
-    baseURL () {
-      switch (this.provider) {
-        case 'gitlab':
-          return `${this.providerURL}/api/v4`
-        case 'github':
-          return 'https://api.github.com/'
-        default:
-          return null
+    providerURL: {
+      get () {
+        return this.$store.state.providerURL
+      },
+      set (value) {
+        this.$store.commit('providerURL', value)
       }
     },
-    headers () {
-      if (!this.providerToken) {
-        return null
-      }
-
-      switch (this.provider) {
-        case 'gitlab':
-          return { 'PRIVATE-TOKEN': `${this.providerToken}` }
-        case 'github':
-          return { 'Authorization': `token ${this.providerToken}` }
-        default:
-          return null
+    providerToken: {
+      get () {
+        return this.$store.state.providerToken
+      },
+      set (value) {
+        this.$store.commit('providerToken', value)
       }
     },
-    config () {
-      const config = {
-        baseURL: this.baseURL
-      }
-
-      return config
-    }
+    ...mapState([
+      'user',
+      'api',
+      'provider'
+    ])
   },
   watch: {
-    config: function (value) {
-      this.api = axios.create(value)
+    provider: function () {
+      this.signOut()
     }
   },
   methods: {
-    signIn () {
-      if (this.headers) {
-        this.config['headers'] = this.headers
-      }
-
-      this.api = axios.create(this.config)
-      this.api.get('/user')
-        .then(response => {
-          this.user = response.data
-        })
-    },
-    signOut () {
-      delete this.config.headers
-      this.user = null
-    }
+    ...mapActions([
+      'setProvider',
+      'signIn',
+      'signOut'
+    ])
+  },
+  mounted () {
+    this.setProvider('gitlab')
   }
 }

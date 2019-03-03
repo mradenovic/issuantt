@@ -98,7 +98,9 @@ export default {
       examples: [
         '/issues',
         'https://gitlab.com/api/v4/projects/10997765/issues',
+        '/projects/10997765/issues',
         'https://api.github.com/repos/angular/angular/issues',
+        '/repos/angular/angular/issues',
         'https://api.github.com/repos/angular/angular/issues?per_page=10'
       ],
       providers: [
@@ -111,9 +113,6 @@ export default {
     }
   },
   methods: {
-    setProvider (provider) {
-      this.provider = provider
-    },
     getLinks (linkHeader) {
       let re = /<(\S*)>;[\s]*rel="([a-z]+)"/g
       let arrRes = []
