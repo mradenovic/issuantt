@@ -7,6 +7,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    // list of suupported providers
+    providers: [
+      'gitlab',
+      'github'
+    ],
     user: null,
     api: axios,
     provider: 'null',

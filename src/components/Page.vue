@@ -9,7 +9,7 @@
 
       <sign-out/>
 
-      <sign-in :providers="providers"/>
+      <sign-in/>
     </section>
 
     <section class="section">
@@ -51,10 +51,6 @@ export default {
         'https://api.github.com/repos/angular/angular/issues',
         '/repos/angular/angular/issues',
         'https://api.github.com/repos/angular/angular/issues?per_page=10'
-      ],
-      providers: [
-        'gitlab',
-        'github'
       ],
       linkHeader: null,
       links: null,

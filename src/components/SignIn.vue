@@ -34,12 +34,6 @@ export default {
   name: 'sign-in',
   mixins: [
     Provider
-  ],
-  props: {
-    providers: {
-      type: Array,
-      required: true
-    }
-  }
+  ]
 }
 </script>

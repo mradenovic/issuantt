@@ -19,6 +19,7 @@ export default {
       }
     },
     ...mapState([
+      'providers',
       'user',
       'api',
       'provider'
