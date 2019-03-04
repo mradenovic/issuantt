@@ -13,6 +13,8 @@
     </section>
 
     <section class="section">
+      <issue-search/>
+
       <div v-for="example of examples" :key="example">
         <a href="#" v-on:click="getIssues(example)">{{ example }}</a>
       </div>
@@ -34,12 +36,14 @@
 import Pagination from './Pagination.vue'
 import SignIn from './SignIn.vue'
 import SignOut from './SignOut.vue'
+import IssueSearch from './IssueSearch.vue'
 
 export default {
   name: 'page',
   components: {
     SignIn,
     SignOut,
+    IssueSearch,
     Pagination
   },
   data: function () {
