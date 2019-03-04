@@ -36,26 +36,29 @@ export default {
     Multiselect
   },
   computed: {
-    ...mapState([
-      'projects',
-      'loading'
-    ]),
-    ...mapGetters([
-      'label'
-    ]),
+    ...mapState({
+      projects: state => state.repo.projects,
+      loading: state => state.loading
+    }),
+    ...mapGetters({
+      label: 'repo/label'
+    }),
     project: {
       get () {
-        return this.$store.state.project
+        return this.$store.state.repo.project
       },
       set (value) {
-        this.$store.commit('project', value)
+        this.$store.commit('repo/project', value)
       }
     }
   },
   methods: {
-    ...mapActions([
+    ...mapActions('repo', [
       'refreshProjects'
     ]),
+    listProjectIssues () {
+
+    },
     searchProjects: debounce(function (query) {
       if (query.length !== 0) {
         this.refreshProjects(query)
