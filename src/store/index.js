@@ -14,6 +14,7 @@ export default new Vuex.Store({
     ],
     user: null,
     api: axios,
+    loading: false,
     provider: 'null',
     providerURL: 'https://gitlab.com',
     providerToken: null
@@ -24,6 +25,9 @@ export default new Vuex.Store({
     },
     api: function (state, value) {
       state.api = value
+    },
+    loading: function (state, value) {
+      state.loading = value
     },
     provider: function (state, value) {
       state.provider = value
@@ -62,23 +66,37 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    setAPI ({ commit }, config) {
+      let api = axios.create(config)
+      const startLoading = (payload) => {
+        commit('loading', true)
+        return payload
+      }
+      const stopLoading = (payload) => {
+        commit('loading', false)
+        return payload
+      }
+      api.interceptors.request.use(startLoading, stopLoading)
+      api.interceptors.response.use(stopLoading, stopLoading)
+      commit('api', api)
+    },
     setProvider ({ commit }, provider) {
       commit('provider', provider)
     },
-    signIn ({ state, getters, commit }) {
+    signIn ({ state, getters, commit, dispatch }) {
       const { baseURL, headers } = getters
 
-      commit('api', axios.create({ baseURL, headers }))
+      dispatch('setAPI', { baseURL, headers })
       state.api.get('/user')
         .then(response => {
           commit('user', response.data)
         })
     },
-    signOut ({ getters, commit }) {
+    signOut ({ getters, commit, dispatch }) {
       const { baseURL } = getters
 
       commit('user', null)
-      commit('api', axios.create({ baseURL }))
+      dispatch('setAPI', { baseURL })
     }
   }
 })
