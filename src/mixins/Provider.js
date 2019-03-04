@@ -22,6 +22,7 @@ export default {
       'providers',
       'user',
       'api',
+      'loading',
       'provider'
     ])
   },

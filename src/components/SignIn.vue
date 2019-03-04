@@ -5,7 +5,7 @@
     <div class="level-left">
       <div class="level-item" v-for="p of providers" :key="p">
         <div>
-          <button class="button is-rounded is-info" :class="{'is-inverted': p !== provider}" @click="setProvider(p)">
+          <button class="button is-rounded is-info" :class="{'is-inverted': p !== provider, 'is-loading': p == provider && loading}" @click="setProvider(p)">
             <i :class="['fa fa-' + p]"></i>
           </button>
         </div>
