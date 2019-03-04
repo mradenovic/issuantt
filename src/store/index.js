@@ -158,8 +158,13 @@ export default new Vuex.Store({
       api.interceptors.response.use(stopLoading, stopLoading)
       commit('api', api)
     },
-    setProvider ({ commit }, provider) {
+    setProvider ({ commit, dispatch }, provider) {
+      dispatch('clearState')
       commit('provider', provider)
+    },
+    clearState ({ commit }) {
+      commit('project', null)
+      commit('projects', [])
     },
     signIn ({ state, getters, commit, dispatch }) {
       const { baseURL, headers } = getters
@@ -174,6 +179,7 @@ export default new Vuex.Store({
       const { baseURL } = getters
 
       commit('user', null)
+      dispatch('clearState')
       dispatch('setAPI', { baseURL })
     }
   }
