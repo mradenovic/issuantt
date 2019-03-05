@@ -9,7 +9,7 @@
       placeholder="Type to search a repository"
       :label="label"
       @search-change="searchProjects"
-      @input="refreshIssues">
+      @input="refreshIssues(null)">
     ></multiselect>
   </div>
 </template>

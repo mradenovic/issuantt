@@ -2,21 +2,17 @@
   <div>
     <div v-if="links">
       <div v-for="rel of ['first', 'prev', 'next', 'last']" v-bind:key="rel"  style="display: inline-block;">
-        <button class="button is-rounded is-info is-small" v-on:click="$emit('pagination-click', links[rel])" v-bind:disabled="!links[rel]">{{ linkTitles[rel] }} </button>
+        <button class="button is-rounded is-info is-small" v-on:click="refreshIssues(links[rel])" v-bind:disabled="!links[rel]">{{ linkTitles[rel] }} </button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
+
 export default {
   name: 'pagination',
-  props: {
-    links: {
-      type: Object,
-      required: true
-    }
-  },
   data: function () {
     return {
       linkTitles: {
@@ -26,6 +22,20 @@ export default {
         last: 'last >>'
       }
     }
+  },
+  computed: {
+    ...mapState('pagination', {
+      page: state => state.page,
+      totaPages: state => state.totalPages,
+      itemsPerPage: state => state.itemsPerPage,
+      totalItems: state => state.totalItems,
+      links: state => state.links
+    })
+  },
+  methods: {
+    ...mapActions('issue', [
+      'refreshIssues'
+    ])
   }
 }
 </script>

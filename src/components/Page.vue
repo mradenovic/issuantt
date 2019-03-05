@@ -11,20 +11,20 @@
       <issue-search/>
 
       <div v-if="issues && issues.length">
-        <!-- <pagination v-bind:links="links" v-on:pagination-click="getIssues"></pagination> -->
+        <pagination></pagination>
 
         <div v-for="issue of issues" v-bind:key="issue.id">
           {{ issue.number || issue.iid }} {{ issue.title }} {{ issue.state }}
         </div>
 
-        <!-- <pagination v-bind:links="links" v-on:pagination-click="getIssues"></pagination> -->
+        <pagination></pagination>
       </div>
     </section>
   </div>
 </template>
 
 <script>
-// import Pagination from './Pagination.vue'
+import Pagination from './Pagination.vue'
 import SignIn from './SignIn.vue'
 import SignOut from './SignOut.vue'
 import IssueSearch from './IssueSearch.vue'
@@ -32,10 +32,10 @@ import IssueSearch from './IssueSearch.vue'
 export default {
   name: 'page',
   components: {
+    Pagination,
     SignIn,
     SignOut,
     IssueSearch
-    // Pagination
   },
   computed: {
     issues () {
