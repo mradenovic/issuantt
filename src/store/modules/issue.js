@@ -69,34 +69,6 @@ const actions = {
   },
   setIssues ({ commit }, issues) {
     commit('issues', issues)
-  },
-  getLinks (linkHeader) {
-    let re = /<(\S*)>;[\s]*rel="([a-z]+)"/g
-    let arrRes = []
-    let links = {}
-
-    while ((arrRes = re.exec(linkHeader)) !== null) {
-      links[arrRes[2]] = arrRes[1]
-    }
-
-    // remove redundant links
-    if (!links.prev) {
-      delete links.first
-    }
-    if (!links.next) {
-      delete links.last
-    }
-    return links
-  },
-  getIssues (issuesUrl) {
-    if (!issuesUrl) return
-
-    this.api.get(issuesUrl)
-      .then(response => {
-        this.linkHeader = response.headers['link']
-        this.links = this.getLinks(this.linkHeader)
-        this.issues = response.data
-      })
   }
 }
 
