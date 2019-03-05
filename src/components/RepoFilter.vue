@@ -9,7 +9,7 @@
       placeholder="Type to search a repository"
       :label="label"
       @search-change="searchProjects"
-      @input="listProjectIssues">
+      @input="refreshIssues">
     ></multiselect>
   </div>
 </template>
@@ -46,9 +46,9 @@ export default {
     ...mapActions('repo', [
       'refreshProjects'
     ]),
-    listProjectIssues () {
-
-    },
+    ...mapActions('issue', [
+      'refreshIssues'
+    ]),
     searchProjects: debounce(function (query) {
       if (query.length !== 0) {
         this.refreshProjects(query)

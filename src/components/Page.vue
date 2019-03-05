@@ -39,8 +39,7 @@ export default {
   },
   computed: {
     issues () {
-      return []
-      // return this.$store.state.issue.issues
+      return this.$store.state.issue.issues
     }
   }
 }

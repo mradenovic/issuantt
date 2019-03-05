@@ -15,6 +15,20 @@ const mutations = {
 }
 
 const getters = {
+  fullName (state, getters, rootState) {
+    if (!state.project) {
+      return null
+    }
+
+    switch (rootState.provider) {
+      case 'gitlab':
+        return state.project.path_with_namespace
+      case 'github':
+        return state.project.full_name
+      default:
+        return null
+    }
+  },
   label (state, getters, rootState) {
     switch (rootState.provider) {
       case 'gitlab':

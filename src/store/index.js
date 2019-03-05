@@ -4,11 +4,13 @@ import Vuex from 'vuex'
 import axios from 'axios'
 
 import repo from './modules/repo'
+import issue from './modules/issue'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
+    issue,
     repo
   },
   state: {
