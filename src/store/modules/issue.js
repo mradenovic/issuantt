@@ -50,15 +50,20 @@ const getters = {
 }
 
 const actions = {
-  refreshIssues ({ state, rootState, getters, rootGetters, dispatch }) {
+  refreshIssues ({ state, rootState, getters, rootGetters, dispatch }, link) {
     // deconstruct geters
+    const { url, params } = link
+      // pagination link
+      ? { url: link, params: {} }
+      // state params
+      : getters
     const { getResponseItems } = rootGetters
-    const { url, params } = getters
 
     // get the list of issues
     rootState.api.get(url, { params })
       .then(response => {
         const data = getResponseItems(response.data)
+        dispatch('pagination/setAll', response, { root: true })
         dispatch('setIssues', data)
       })
   },

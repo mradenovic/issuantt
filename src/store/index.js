@@ -5,11 +5,13 @@ import axios from 'axios'
 
 import repo from './modules/repo'
 import issue from './modules/issue'
+import pagination from './modules/pagination'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
+    pagination,
     issue,
     repo
   },
