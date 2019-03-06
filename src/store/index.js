@@ -6,11 +6,15 @@ import axios from 'axios'
 import repo from './modules/repo'
 import issue from './modules/issue'
 import pagination from './modules/pagination'
+import gitlab from './modules/gitlab'
+import github from './modules/github'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
+    github,
+    gitlab,
     pagination,
     issue,
     repo
@@ -49,39 +53,14 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    getResponseItems: (state) => (data) => {
-      switch (state.provider) {
-        case 'gitlab':
-          return data
-        case 'github':
-          return data.items
-        default:
-          return null
-      }
+    getResponseItems: (state, getters) => (data) => {
+      return getters[`${state.provider}/getResponseItems`](data)
     },
-    baseURL (state) {
-      switch (state.provider) {
-        case 'gitlab':
-          return `${state.providerURL}/api/v4`
-        case 'github':
-          return 'https://api.github.com/'
-        default:
-          return null
-      }
+    baseURL (state, getters) {
+      return getters[`${state.provider}/baseURL`]
     },
-    headers (state) {
-      if (!state.providerToken) {
-        return null
-      }
-
-      switch (state.provider) {
-        case 'gitlab':
-          return { 'PRIVATE-TOKEN': `${state.providerToken}` }
-        case 'github':
-          return { 'Authorization': `token ${state.providerToken}` }
-        default:
-          return null
-      }
+    headers (state, getters) {
+      return getters[`${state.provider}/headers`]
     }
   },
   actions: {

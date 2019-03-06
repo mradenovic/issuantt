@@ -15,54 +15,17 @@ const mutations = {
 }
 
 const getters = {
-  fullName (state, getters, rootState) {
-    if (!state.project) {
-      return null
-    }
-
-    switch (rootState.provider) {
-      case 'gitlab':
-        return state.project.path_with_namespace
-      case 'github':
-        return state.project.full_name
-      default:
-        return null
-    }
+  fullName (state, getters, rootState, rootGetters) {
+    return rootGetters[`${rootState.provider}/projectFullName`]
   },
-  label (state, getters, rootState) {
-    switch (rootState.provider) {
-      case 'gitlab':
-        return 'path_with_namespace'
-      case 'github':
-        return 'full_name'
-      default:
-        return null
-    }
+  label (state, getters, rootState, rootGetters) {
+    return rootGetters[`${rootState.provider}/projectLabel`]
   },
-  getParams: (state, getters, rootState) => (search) => {
-    // set pagination for projects
-    const params = {
-      'per_page': '10'
-    }
-    switch (rootState.provider) {
-      case 'gitlab':
-        return { ...params, search }
-      case 'github':
-        const q = search
-        return { ...params, q }
-      default:
-        return null
-    }
+  getParams: (state, getters, rootState, rootGetters) => (search) => {
+    return rootGetters[`${rootState.provider}/getProjectParams`](search)
   },
-  url (state, getters, rootState) {
-    switch (rootState.provider) {
-      case 'gitlab':
-        return '/projects'
-      case 'github':
-        return '/search/repositories'
-      default:
-        return null
-    }
+  url (state, getters, rootState, rootGetters) {
+    return rootGetters[`${rootState.provider}/projectURL`]
   }
 }
 
