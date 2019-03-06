@@ -24,8 +24,8 @@ const getters = {
   getParams: (state, getters, rootState, rootGetters) => (search) => {
     return rootGetters[`${rootState.provider}/getProjectParams`](search)
   },
-  url (state, getters, rootState, rootGetters) {
-    return rootGetters[`${rootState.provider}/projectURL`]
+  getURL: (state, getters, rootState, rootGetters) => (search) => {
+    return rootGetters[`${rootState.provider}/getProjectURL`](search)
   }
 }
 
@@ -33,10 +33,10 @@ const actions = {
   refreshProjects ({ state, rootState, getters, rootGetters, dispatch }, search) {
     // deconstruct geters
     const { getResponseItems } = rootGetters
-    const { url, getParams } = getters
+    const { getURL, getParams } = getters
 
     // get the list of projects
-    rootState.api.get(url, { params: getParams(search) })
+    rootState.api.get(getURL(search), { params: getParams(search) })
       .then(response => {
         const data = getResponseItems(response.data)
         dispatch('setProjects', data)

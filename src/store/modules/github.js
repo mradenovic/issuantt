@@ -21,7 +21,7 @@ const getters = {
       q: search
     }
   },
-  projectURL (state, getters, rootState) {
+  getProjectURL: (state, getters, rootState) => () => {
     return '/search/repositories'
   },
   getIssuesParams: (state, getters) => (search) => {
