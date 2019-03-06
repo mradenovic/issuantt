@@ -44,7 +44,7 @@ const getters = {
   },
   headers (statestate, getters, rootState) {
     return rootState.providerToken
-      ? { 'PRIVATE-TOKEN': `${state.providerToken}` }
+      ? { 'PRIVATE-TOKEN': `${rootState.providerToken}` }
       : null
   }
 }

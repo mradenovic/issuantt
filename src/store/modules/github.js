@@ -42,7 +42,7 @@ const getters = {
   },
   headers (statestate, getters, rootState) {
     return rootState.providerToken
-      ? { 'Authorization': `token ${state.providerToken}` }
+      ? { 'Authorization': `token ${rootState.providerToken}` }
       : null
   }
 }
