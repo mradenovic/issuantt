@@ -27,7 +27,7 @@ export default {
     ...mapState('pagination', {
       page: state => state.page,
       totaPages: state => state.totalPages,
-      itemsPerPage: state => state.itemsPerPage,
+      perPageItems: state => state.perPageItems,
       totalItems: state => state.totalItems,
       links: state => state.links
     })
