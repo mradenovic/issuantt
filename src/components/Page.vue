@@ -14,9 +14,7 @@
       <div v-if="issues && issues.length">
         <pagination></pagination>
 
-        <div v-for="issue of issues" v-bind:key="issue.id">
-          {{ issue.number || issue.iid }} {{ issue.title }} {{ issue.state }}
-        </div>
+        <tasks :issues="issues"/>
 
         <pagination></pagination>
       </div>
@@ -30,10 +28,12 @@ import SignIn from './SignIn.vue'
 import SignOut from './SignOut.vue'
 import IssueSearch from './IssueSearch.vue'
 import Error from './Error.vue'
+import Tasks from './Tasks.vue'
 
 export default {
   name: 'page',
   components: {
+    Tasks,
     Error,
     Pagination,
     SignIn,
