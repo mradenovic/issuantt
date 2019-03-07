@@ -25,6 +25,7 @@ export default new Vuex.Store({
       'gitlab',
       'github'
     ],
+    error: null,
     user: null,
     api: axios,
     loading: false,
@@ -33,6 +34,9 @@ export default new Vuex.Store({
     providerToken: null
   },
   mutations: {
+    error: function (state, value) {
+      state.error = value
+    },
     user: function (state, value) {
       state.user = value
     },
@@ -66,16 +70,30 @@ export default new Vuex.Store({
   actions: {
     setAPI ({ commit }, config) {
       let api = axios.create(config)
-      const startLoading = (payload) => {
+
+      // set loading status in interxeptors
+      const onRequest = (config) => {
+        commit('error', null)
         commit('loading', true)
-        return payload
+        return config
       }
-      const stopLoading = (payload) => {
+      const onRequestError = (error) => {
         commit('loading', false)
-        return payload
+        commit('error', error)
+        return Promise.reject(error)
       }
-      api.interceptors.request.use(startLoading, stopLoading)
-      api.interceptors.response.use(stopLoading, stopLoading)
+      const onResponse = (response) => {
+        commit('loading', false)
+        return response
+      }
+      const onResponseError = (error) => {
+        commit('loading', false)
+        commit('error', error.response.data.message)
+        return Promise.reject(error)
+      }
+
+      api.interceptors.request.use(onRequest, onRequestError)
+      api.interceptors.response.use(onResponse, onResponseError)
       commit('api', api)
     },
     setProvider ({ commit, dispatch }, provider) {
