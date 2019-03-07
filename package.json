@@ -16,6 +16,7 @@
     "bulma": "^0.7.4",
     "debounce": "^1.2.0",
     "font-awesome": "^4.7.0",
+    "gantt-elastic": "^0.9.6",
     "vue": "^2.6.6",
     "vue-multiselect": "^2.1.4",
     "vuex": "^3.0.1"
