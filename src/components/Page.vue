@@ -9,6 +9,7 @@
 
     <section class="section">
       <issue-search/>
+      <error/>
 
       <div v-if="issues && issues.length">
         <pagination></pagination>
@@ -28,10 +29,12 @@ import Pagination from './Pagination.vue'
 import SignIn from './SignIn.vue'
 import SignOut from './SignOut.vue'
 import IssueSearch from './IssueSearch.vue'
+import Error from './Error.vue'
 
 export default {
   name: 'page',
   components: {
+    Error,
     Pagination,
     SignIn,
     SignOut,
