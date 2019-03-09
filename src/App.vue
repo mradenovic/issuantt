@@ -10,7 +10,7 @@
       </header>
 
       <!-- Provider filter -->
-      <section class="content">
+      <section class="">
         <issue-search/>
       </section>
 

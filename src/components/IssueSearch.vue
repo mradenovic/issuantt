@@ -1,12 +1,10 @@
 <template>
-  <!-- SignOut Header -->
+  <!-- Issues filter -->
   <div>
-    <div class="container">
+    <div class="">
       <div class="columns">
-        <div class="column is-2">
-          <label>Project / Repo</label>
-        </div>
         <div class="column is-4">
+          <label>Project / Repo</label>
           <repo-filter></repo-filter>
         </div>
       </div>
