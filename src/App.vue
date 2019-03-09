@@ -1,5 +1,10 @@
 <template>
   <div id="app" class="section">
+    <!-- Header -->
+    <header class="content">
+      <issuantt-header/>
+    </header>
+
     <!-- Provider content -->
     <main>
       <!-- Provider header -->
@@ -31,6 +36,7 @@
 import 'font-awesome/css/font-awesome.css'
 import './assets/styles/issuantt.scss'
 
+import IssuanttHeader from './components/IssuanttHeader.vue'
 import SignIn from './components/SignIn.vue'
 import SignOut from './components/SignOut.vue'
 import IssueSearch from './components//IssueSearch.vue'
@@ -40,6 +46,7 @@ import Page from './components/Page.vue'
 export default {
   name: 'app',
   components: {
+    IssuanttHeader,
     SignIn,
     SignOut,
     IssueSearch,
