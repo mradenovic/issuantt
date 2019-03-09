@@ -1,13 +1,13 @@
 <template>
   <div>
-    <section class="section">
+    <section class="content">
 
       <sign-out/>
 
       <sign-in/>
     </section>
 
-    <section class="section">
+    <section class="content">
       <issue-search/>
       <error/>
 
