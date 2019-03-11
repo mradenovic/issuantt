@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div v-if="!issues || !issues.length">You have no issues! Great! Right!?</div>
     <div v-if="issues && issues.length">
       <nav>
         <pagination></pagination>
