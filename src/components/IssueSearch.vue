@@ -5,7 +5,7 @@
       <div class="columns">
         <div class="column is-4">
           <label>Project / Repo</label>
-          <repo-filter></repo-filter>
+          <project-filter></project-filter>
         </div>
       </div>
     </div>
@@ -13,12 +13,12 @@
 </template>
 
 <script>
-import RepoFilter from './RepoFilter.vue'
+import ProjectFilter from './ProjectFilter.vue'
 
 export default {
   name: 'issue-search',
   components: {
-    RepoFilter
+    ProjectFilter
   }
 }
 </script>

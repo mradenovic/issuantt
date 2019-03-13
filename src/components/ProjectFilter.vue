@@ -21,7 +21,7 @@ import Multiselect from 'vue-multiselect'
 import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
-  name: 'repo-filter',
+  name: 'project-filter',
   components: {
     Multiselect
   },
