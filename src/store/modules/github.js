@@ -24,11 +24,11 @@ const getters = {
   getProjectURL: (state, getters, rootState) => () => {
     return '/search/repositories'
   },
-  getIssuesParams: (state, getters) => (search) => {
-    const { projectFullName } = getters
+  getIssuesParams: (state, getters, rootState) => () => {
+    const search = rootState.filter.search
     return {
       per_page: 20,
-      q: `state:open type:issue repo:${projectFullName}`
+      q: search
     }
   },
   issuesURL (state, getters, rootState) {

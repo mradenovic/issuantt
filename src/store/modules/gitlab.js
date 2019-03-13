@@ -34,17 +34,47 @@ const getters = {
       ? 'projects'
       : `groups/${group}/projects`
   },
-  getIssuesParams: () => (search) => {
+  search (state, getters, rootState) {
+    let search = {}
+    const fields = rootState.filter.search.split(' ')
+
+    for (const field of fields) {
+      const [ key, value ] = field.split(':')
+      if (key && value) {
+        search[key] = value
+      }
+    }
+
+    return search
+  },
+  group (state, getters) {
+    return getters.search.group
+  },
+  project (state, getters) {
+    return getters.search.project
+  },
+  getIssuesParams: (state, getters) => (search) => {
+    let q = { ...getters.search }
+    delete q.user
+    delete q.group
+    delete q.project
+
     return {
       per_page: 20,
-      state: 'opened'
+      ...q
     }
   },
   issuesURL (state, getters, rootState) {
-    const project = rootState.filter.project
-    return project
-      ? `/projects/${project.id}/issues`
-      : null
+    // const project = rootState.filter.project
+    const { group, project } = getters
+    const groupsURI = group
+      ? `/groups/${encodeURIComponent(group)}`
+      : ''
+    const projectsURI = project
+      ? `/projects/${encodeURIComponent(project)}`
+      : ''
+
+    return `${groupsURI}${projectsURI}/issues`
   },
   getResponseItems: (statestate, getters, rootState) => (data) => {
     return data

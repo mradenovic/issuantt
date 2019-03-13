@@ -1,11 +1,15 @@
 
 const state = {
+  search: '',
   // projects
   projects: [],
   project: null
 }
 
 const mutations = {
+  search: function (state, value) {
+    state.search = value
+  },
   projects: function (state, value) {
     state.projects = value
   },

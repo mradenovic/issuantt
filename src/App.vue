@@ -15,8 +15,8 @@
       </header>
 
       <!-- Provider filter -->
-      <section class="">
-        <issue-search/>
+      <section class="content">
+        <issue-filter/>
       </section>
 
       <!-- Provider error -->
@@ -39,7 +39,7 @@ import './assets/styles/issuantt.scss'
 import IssuanttHeader from './components/IssuanttHeader.vue'
 import SignIn from './components/SignIn.vue'
 import SignOut from './components/SignOut.vue'
-import IssueSearch from './components//IssueSearch.vue'
+import IssueFilter from './components/IssueFilter.vue'
 import Error from './components//Error.vue'
 import Page from './components/Page.vue'
 
@@ -49,7 +49,7 @@ export default {
     IssuanttHeader,
     SignIn,
     SignOut,
-    IssueSearch,
+    IssueFilter,
     Error,
     Page
   }
