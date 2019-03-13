@@ -7,7 +7,7 @@ const mutations = {
 
 const getters = {
   projectFullName (state, getters, rootState) {
-    const project = rootState.repo.project
+    const project = rootState.filter.project
     return project
       ? project.path_with_namespace
       : null
@@ -41,7 +41,7 @@ const getters = {
     }
   },
   issuesURL (state, getters, rootState) {
-    const project = rootState.repo.project
+    const project = rootState.filter.project
     return project
       ? `/projects/${project.id}/issues`
       : null

@@ -27,23 +27,23 @@ export default {
   },
   computed: {
     ...mapState({
-      projects: state => state.repo.projects,
+      projects: state => state.filter.projects,
       loading: state => state.loading
     }),
     ...mapGetters({
-      label: 'repo/label'
+      label: 'filter/label'
     }),
     project: {
       get () {
-        return this.$store.state.repo.project
+        return this.$store.state.filter.project
       },
       set (value) {
-        this.$store.commit('repo/project', value)
+        this.$store.commit('filter/project', value)
       }
     }
   },
   methods: {
-    ...mapActions('repo', [
+    ...mapActions('filter', [
       'refreshProjects'
     ]),
     ...mapActions('issue', [

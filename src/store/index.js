@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 
 import axios from 'axios'
 
-import repo from './modules/repo'
+import filter from './modules/filter'
 import issue from './modules/issue'
 import pagination from './modules/pagination'
 import gitlab from './modules/gitlab'
@@ -17,7 +17,7 @@ export default new Vuex.Store({
     gitlab,
     pagination,
     issue,
-    repo
+    filter
   },
   state: {
     // list of suupported providers
@@ -101,8 +101,8 @@ export default new Vuex.Store({
       commit('provider', provider)
     },
     clearState ({ commit }) {
-      commit('repo/project', null)
-      commit('repo/projects', [])
+      commit('filter/project', null)
+      commit('filter/projects', [])
     },
     signIn ({ state, getters, commit, dispatch }) {
       const { baseURL, headers } = getters

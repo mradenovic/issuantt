@@ -7,7 +7,7 @@ const mutations = {
 
 const getters = {
   projectFullName (state, getters, rootState) {
-    const project = rootState.repo.project
+    const project = rootState.filter.project
     return project
       ? project.full_name
       : null
