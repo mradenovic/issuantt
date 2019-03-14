@@ -26,6 +26,35 @@ StartDate: 2019-03-05
 DueDate: 2019-03-19
 ```
 
+Open [https://issuantt.gitlab.io/issuantt](https://issuantt.gitlab.io/issuantt) and search for issues, i.e.:
+
+```text
+project:your_user_name/your_project_name
+```
+
+### Search
+
+_Issuantt_ supports [GitlHub style issue query](https://help.github.com/en/articles/searching-issues-and-pull-requests) and [GitLab style attributes](https://docs.gitlab.com/ee/api/issues.html#list-issues).
+
+```text
+## GitLab example ##
+state:opened project:issuantt/issuantt
+
+## GitHub example ##
+is:issue state:open repo:issuantt/issuantt
+```
+
+There some differences between them and the most important are listed in the table below.
+
+|GitLab|GitHub|
+|------|------|
+|`group:issuantt` |`org:issuant`|
+|`group:issuantt/issuant` |`repo:issuantt/issuant`|
+|`state:opened` |`state:open`|
+|`author_id:user_id` |`author:username`|
+|`assignee_id:user_id` |`assignee:username`|
+|`labels:bug,critical` |`label:bug label:critical`|
+
 ### Start and Due dates
 
 _Issuantt_ is a **frontend only** application. It leverages [GitLab API](https://gitlab.com/help/api/README.md) or [GitHub API](https://developer.github.com/v3/) to read and display your issues in a [Gantt chart](https://en.wikipedia.org/wiki/Gantt_chart). Each issue is displayed in a range from a **start date** defaulting to the issue creation date, to a **due date** defaulting to the day after that, if no other dates are set.
