@@ -48,8 +48,8 @@ There some differences between them and the most important are listed in the tab
 
 |GitLab|GitHub|
 |------|------|
-|`group:issuantt` |`org:issuant`|
-|`group:issuantt/issuant` |`repo:issuantt/issuant`|
+|`group:issuantt` |`org:issuantt`|
+|`project:issuantt/issuantt` |`repo:issuantt/issuantt`|
 |`state:opened` |`state:open`|
 |`author_id:user_id` |`author:username`|
 |`assignee_id:user_id` |`assignee:username`|
