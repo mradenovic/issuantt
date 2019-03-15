@@ -32,7 +32,7 @@ Open [https://issuantt.gitlab.io/issuantt](https://issuantt.gitlab.io/issuantt) 
 project:your_user_name/your_project_name
 ```
 
-### Search
+### Search options
 
 _Issuantt_ supports [GitlHub style issue query](https://help.github.com/en/articles/searching-issues-and-pull-requests) and [GitLab style attributes](https://docs.gitlab.com/ee/api/issues.html#list-issues).
 
