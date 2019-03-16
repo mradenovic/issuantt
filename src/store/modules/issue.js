@@ -23,7 +23,7 @@ const getters = {
 }
 
 const actions = {
-  refreshIssues ({ state, rootState, getters, rootGetters, dispatch }, link) {
+  refreshIssues ({ state, rootState, getters, rootGetters, dispatch, commit }, link) {
     // deconstruct geters
     const { url, params } = link
       // pagination link
@@ -31,6 +31,9 @@ const actions = {
       // state params
       : getters
     const { getResponseItems } = rootGetters
+
+    // clear issues before fetching the new ones
+    commit('issues', [])
 
     // get the list of issues
     rootState.api.get(url, { params })

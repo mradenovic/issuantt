@@ -103,6 +103,7 @@ export default new Vuex.Store({
     clearState ({ commit }) {
       commit('filter/project', null)
       commit('filter/projects', [])
+      commit('issue/issues')
     },
     signIn ({ state, getters, commit, dispatch }) {
       const { baseURL, headers } = getters
