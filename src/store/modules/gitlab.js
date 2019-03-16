@@ -35,14 +35,13 @@ const getters = {
       : `groups/${group}/projects`
   },
   search (state, getters, rootState) {
+    let match
     let search = {}
-    const fields = rootState.filter.search.split(' ')
+    // regexp (key):(("value")|(value))
+    const re = new RegExp('(\\w+?):(?:"(.+?)"\\s*|(\\S+))', 'g')
 
-    for (const field of fields) {
-      const [ key, value ] = field.split(':')
-      if (key && value) {
-        search[key] = value
-      }
+    while ((match = re.exec(rootState.filter.search))) {
+      search[match[1]] = match[2] || match[3]
     }
 
     return search
