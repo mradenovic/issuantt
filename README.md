@@ -9,6 +9,8 @@ The code is hosted at [https://gitlab.com/issuantt/issuantt](https://gitlab.com/
 
 ![Issuant preview](preview.png)
 
+This project is heavily inspired by the [GanttLab-Live Project](https://gitlab.com/ganttlab/ganttlab-live) originally developed by [Pierre-Alexandre Clorichel](https://gitlab.com/clorichel).
+
 ## How to use Issuantt
 
 ### Quick Start
