@@ -109,12 +109,12 @@ export default {
       return this.getIssueParentId(issue)
     },
     getTaskLabel (issue) {
-      const title = this.getIssueTitle(issue) 
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+      const title = this.getIssueTitle(issue)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;')
       const label = `<a href="${this.getIssueLink(issue)}" target="_blank" style="color:#0077c0;">${title}</a>`
       return label
     },
