@@ -38,7 +38,7 @@ const getters = {
     let match
     let search = {}
     // regexp (key):(("value")|(value))
-    const re = new RegExp('(\\w+?):(?:"(.+?)"\\s*|(\\S+))', 'g')
+    const re = new RegExp('(\\S+?):(?:"(.+?)"\\s*|(\\S+))', 'g')
 
     while ((match = re.exec(rootState.filter.search))) {
       search[match[1]] = match[2] || match[3]
