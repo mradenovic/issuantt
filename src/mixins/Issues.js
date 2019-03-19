@@ -61,6 +61,7 @@ export default {
     getIssueStartDate (issue) {
       return (
         this.getIssueCustomStartDate(issue) ||
+        this.getIssueMilestoneStartDate(issue) ||
         issue.created_at
       )
     },
@@ -84,6 +85,12 @@ export default {
     getIssueMilestoneDueDate (issue) {
       return (issue.milestone || null) && (
         issue.milestone.due_date || issue.milestone.due_on || null
+      )
+    },
+    getIssueMilestoneStartDate (issue) {
+      return (issue.milestone || null) && (
+        // github doesn't really have start_on date for milestone
+        issue.milestone.start_date || issue.milestone.start_on || null
       )
     },
     getIssueMockDueDate (issue) {
