@@ -90,11 +90,18 @@ const getters = {
 
 const actions = {
   setPaginationStats ({ commit }, response) {
-    const headers = response.headers
-    commit('pagination/page', headers['x-page'].match(/\d+/)[0], { root: true })
-    commit('pagination/totalPages', headers['x-total-pages'].match(/\d+/)[0], { root: true })
-    commit('pagination/perPageItems', headers['x-per-page'].match(/\d+/)[0], { root: true })
-    commit('pagination/totalItems', headers['x-total'].match(/\d+/)[0], { root: true })
+    const actions = [
+      { header: 'x-page', param: 'page' },
+      { header: 'x-total-page', param: 'totalPages' },
+      { header: 'x-per-page', param: 'perPageItems' },
+      { header: 'x-total', param: 'totalItems' }
+    ]
+
+    for (const action of actions) {
+      const header = response.headers[action.header]
+      const value = header ? header.match(/\d+/)[0] : -1
+      commit(`pagination/${action.param}`, value, { root: true })
+    }
   }
 }
 
