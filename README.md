@@ -141,6 +141,24 @@ npm run test:unit
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
+## Customize Issuantt
+
+If you need to customize Issuant, create an env file as described in [Vue Modes and Environment Variables](https://cli.vuejs.org/guide/mode-and-env.html). You can start with `.env.example`:
+
+```bash
+cp .env.example .env.local
+```
+
+Currently, the following variables can be customized:
+
+|Key|Default|Description|
+-|-|-
+|`VUE_APP_CUSTOM_START_STRING`|`"StartDate:"`|The key to search for start date in the issue description|
+|`VUE_APP_CUSTOM_DUE_STRING`|`"DueDate:"`|The key to search for due date in the issue description|
+|`VUE_APP_CUSTOM_DEPENDS_ON_STRING`|`"DependsOn:"`|The key to search for dependencies in the issue description|
+|`VUE_APP_CUSTOM_PARENT_ID_STRING`|`"ParentId:"`|The key to search for the parent issue in the issue description|
+
+
 ## Deployment
 
 If you fork the project on GitLab it will automaticaly deploy to [GitLab Pages](https://about.gitlab.com/product/pages/#step-3) at:
