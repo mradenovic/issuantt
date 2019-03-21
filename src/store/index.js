@@ -8,11 +8,13 @@ import issue from './modules/issue'
 import pagination from './modules/pagination'
 import gitlab from './modules/gitlab'
 import github from './modules/github'
+import env from './modules/env'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
+    env,
     github,
     gitlab,
     pagination,
