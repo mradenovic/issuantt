@@ -6,7 +6,7 @@
         <pagination></pagination>
       </nav>
 
-      <tasks :issues="issues"/>
+      <tasks v-bind="{...customStrings, issues}"/>
 
       <nav>
         <pagination></pagination>
@@ -18,6 +18,7 @@
 <script>
 import Pagination from './Pagination.vue'
 import Tasks from './Tasks.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'page',
@@ -28,7 +29,10 @@ export default {
   computed: {
     issues () {
       return this.$store.state.issue.issues
-    }
+    },
+    ...mapGetters({
+      customStrings: 'env/customStrings'
+    })
   }
 }
 </script>
