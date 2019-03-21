@@ -1,18 +1,18 @@
 export default {
   props: {
-    customStartString: {
+    startString: {
       type: String,
       default: 'StartDate:'
     },
-    customDueString: {
+    dueString: {
       type: String,
       default: 'DueDate:'
     },
-    customDependsOnString: {
+    dependsOnString: {
       type: String,
       default: 'DependsOn:'
     },
-    customParentIdString: {
+    parentIdString: {
       type: String,
       default: 'ParentId:'
     },
@@ -28,13 +28,13 @@ export default {
     },
     getIssueParentId (issue) {
       let description = this.getIssueDescription(issue)
-      let re = new RegExp(`${this.customParentIdString}\\s*(#.*\\d)`)
+      let re = new RegExp(`${this.parentIdString}\\s*(#.*\\d)`)
       let parentId = description.match(re)
       return parentId ? parentId[1] : null
     },
     getIssueDependencies (issue) {
       let description = this.getIssueDescription(issue)
-      let re = new RegExp(`${this.customDependsOnString}\\s*(#.*\\d)`)
+      let re = new RegExp(`${this.dependsOnString}\\s*(#.*\\d)`)
       let dependencies = description.match(re)
       return dependencies ? dependencies[1] : null
     },
@@ -98,9 +98,9 @@ export default {
       dueDate.setDate(dueDate.getDate() + 1)
       return dueDate.toISOString()
     },
-    getIssueCustomDate (issue, customDateString) {
+    getIssueCustomDate (issue, dateString) {
       let description = this.getIssueDescription(issue)
-      let re = new RegExp(`${customDateString}\\s*(\\S*)`)
+      let re = new RegExp(`${dateString}\\s*(\\S*)`)
       let ganttDate = description.match(re)
 
       // check if result is valid date
@@ -109,10 +109,10 @@ export default {
         : null
     },
     getIssueCustomStartDate (issue) {
-      return this.getIssueCustomDate(issue, this.customStartString)
+      return this.getIssueCustomDate(issue, this.startString)
     },
     getIssueCustomDueDate (issue) {
-      return this.getIssueCustomDate(issue, this.customDueString)
+      return this.getIssueCustomDate(issue, this.dueString)
     },
     getIssueAssignees (issue) {
       return issue.assignees

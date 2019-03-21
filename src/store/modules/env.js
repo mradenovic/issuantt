@@ -5,27 +5,27 @@ const state = {
   gitlabToken: process.env.VUE_APP_GITLAB_TOKEN,
   githubToken: process.env.VUE_APP_GITHUB_TOKEN,
 
-  customStartString: process.env.VUE_APP_CUSTOM_START_STRING,
-  customDueString: process.env.VUE_APP_CUSTOM_DUE_STRING,
-  customDependsOnString: process.env.VUE_APP_CUSTOM_DEPENDS_ON_STRING,
-  customParentIdString: process.env.VUE_APP_CUSTOM_PARENT_ID_STRING
+  startString: process.env.VUE_APP_CUSTOM_START_STRING,
+  dueString: process.env.VUE_APP_CUSTOM_DUE_STRING,
+  dependsOnString: process.env.VUE_APP_CUSTOM_DEPENDS_ON_STRING,
+  parentIdString: process.env.VUE_APP_CUSTOM_PARENT_ID_STRING
 }
 
 const getters = {
   customStrings (state) {
     const {
-      customStartString,
-      customDueString,
-      customDependsOnString,
-      customParentIdString
+      startString,
+      dueString,
+      dependsOnString,
+      parentIdString
     } = state
 
     // return values only if defined
     return {
-      ...(customStartString && { customStartString }),
-      ...(customDueString && { customDueString }),
-      ...(customDependsOnString && { customDependsOnString }),
-      ...(customParentIdString && { customParentIdString })
+      ...(startString && { startString }),
+      ...(dueString && { dueString }),
+      ...(dependsOnString && { dependsOnString }),
+      ...(parentIdString && { parentIdString })
     }
   }
 }
