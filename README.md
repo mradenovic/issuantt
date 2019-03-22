@@ -157,6 +157,10 @@ Currently, the following variables can be customized:
 |`VUE_APP_CUSTOM_DUE_STRING`|`"DueDate:"`|The key to search for due date in the issue description|
 |`VUE_APP_CUSTOM_DEPENDS_ON_STRING`|`"DependsOn:"`|The key to search for dependencies in the issue description|
 |`VUE_APP_CUSTOM_PARENT_ID_STRING`|`"ParentId:"`|The key to search for the parent issue in the issue description|
+|`VUE_APP_GITLAB_URL`|`https://gitlab.com`|GitLab instance url|
+|`VUE_APP_GITLAB_TOKEN`|`null`|GitLab Private Token or Personal Access Token|
+|`VUE_APP_GITHUB_URL`|`https://github.com`|GitHub Enterprise Instance (**not supported yet**)
+|`VUE_APP_GITHUB_TOKEN`|`null`|GitHub Personal Access Token|
 
 
 ## Deployment
