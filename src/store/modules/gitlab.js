@@ -1,6 +1,6 @@
 
 const state = {
-  url: process.env.VUE_APP_GITLAB_URL,
+  url: process.env.VUE_APP_GITLAB_URL || 'https://gitlab.com',
   token: process.env.VUE_APP_GITLAB_TOKEN
 }
 
