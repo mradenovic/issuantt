@@ -1,5 +1,7 @@
 
 const state = {
+  url: process.env.VUE_APP_GITHUB_URL,
+  token: process.env.VUE_APP_GITHUB_TOKEN
 }
 
 const mutations = {
@@ -37,12 +39,12 @@ const getters = {
   getResponseItems: (statestate, getters, rootState) => (data) => {
     return data.items
   },
-  baseURL (statestate, getters, rootState) {
+  baseURL (state, getters, rootState) {
     return 'https://api.github.com/'
   },
-  headers (statestate, getters, rootState) {
-    return rootState.providerToken
-      ? { 'Authorization': `token ${rootState.providerToken}` }
+  headers (state, getters, rootState) {
+    return state.token
+      ? { 'Authorization': `token ${state.token}` }
       : null
   }
 }

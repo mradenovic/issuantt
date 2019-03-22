@@ -31,9 +31,7 @@ export default new Vuex.Store({
     user: null,
     api: axios,
     loading: false,
-    provider: 'null',
-    providerURL: 'https://gitlab.com',
-    providerToken: null
+    provider: 'null'
   },
   mutations: {
     error: function (state, value) {
@@ -52,13 +50,23 @@ export default new Vuex.Store({
       state.provider = value
     },
     providerURL: function (state, value) {
-      state.providerURL = value
+      state[state.provider].url = value
     },
     providerToken: function (state, value) {
-      state.providerToken = value
+      state[state.provider].token = value
     }
   },
   getters: {
+    providerURL (state) {
+      return state[state.provider]
+        ? state[state.provider].url
+        : null
+    },
+    providerToken (state) {
+      return state[state.provider]
+        ? state[state.provider].token
+        : null
+    },
     getResponseItems: (state, getters) => (data) => {
       return getters[`${state.provider}/getResponseItems`](data)
     },

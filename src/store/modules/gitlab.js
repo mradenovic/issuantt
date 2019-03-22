@@ -1,5 +1,7 @@
 
 const state = {
+  url: process.env.VUE_APP_GITLAB_URL,
+  token: process.env.VUE_APP_GITLAB_TOKEN
 }
 
 const mutations = {
@@ -78,12 +80,12 @@ const getters = {
   getResponseItems: (statestate, getters, rootState) => (data) => {
     return data
   },
-  baseURL (statestate, getters, rootState) {
-    return `${rootState.providerURL}/api/v4`
+  baseURL (state, getters, rootState) {
+    return `${state.url}/api/v4`
   },
-  headers (statestate, getters, rootState) {
-    return rootState.providerToken
-      ? { 'PRIVATE-TOKEN': `${rootState.providerToken}` }
+  headers (state, getters, rootState) {
+    return state.token
+      ? { 'PRIVATE-TOKEN': `${state.token}` }
       : null
   }
 }

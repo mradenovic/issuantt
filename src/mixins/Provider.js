@@ -4,7 +4,7 @@ export default {
   computed: {
     providerURL: {
       get () {
-        return this.$store.state.providerURL
+        return this.$store.getters.providerURL
       },
       set (value) {
         this.$store.commit('providerURL', value)
@@ -12,7 +12,7 @@ export default {
     },
     providerToken: {
       get () {
-        return this.$store.state.providerToken
+        return this.$store.getters.providerToken
       },
       set (value) {
         this.$store.commit('providerToken', value)
