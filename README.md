@@ -70,7 +70,13 @@ DueDate: 2019-03-19
 
 ### Hierarchy and dependencies (experimental)
 
-You can set a hierarchy and dependencies in the issue description. An issue can have only one parent and many dependencies. However, to many dependencies can make the chart pretty messy.
+You can set a hierarchy and dependencies in the issue description. Both **parentId** and **dependentOn** properties of **gantt-elasstic** are undocumented and considered **experimental**. The possible result can look like something in the preview image at the [top](#Issuantt) of this page.
+
+`ParentId` determines the hierarchy in the task list and an issue can have only one parent.
+
+`DependsOn` determines connectors drawn in the Gantt chart and an issue can have many dependencies. However, to many dependencies can make the chart pretty messy.
+
+Here is an example how you can set a parent and dependencies in the issue description:
 
 ```text
 ParentId: #8
