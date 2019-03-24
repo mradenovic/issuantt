@@ -1,7 +1,14 @@
 <template>
   <div>
-    <pagination-stats />
-    <pagination-links />
+    <div class="level">
+      <div class="level-item">
+        <pagination-stats />
+      </div>
+
+      <div class="level-item">
+        <pagination-links />
+      </div>
+    </div>
   </div>
 </template>
 
