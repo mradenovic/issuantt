@@ -101,7 +101,7 @@ const actions = {
 
     for (const action of actions) {
       const header = response.headers[action.header]
-      const value = header ? header.match(/\d+/)[0] : -1
+      const value = header ? header.match(/\d+/)[0] : 'unknown'
       commit(`pagination/${action.param}`, value, { root: true })
     }
   }
