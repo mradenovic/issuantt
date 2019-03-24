@@ -94,7 +94,7 @@ const actions = {
   setPaginationStats ({ commit }, response) {
     const actions = [
       { header: 'x-page', param: 'page' },
-      { header: 'x-total-page', param: 'totalPages' },
+      { header: 'x-total-pages', param: 'totalPages' },
       { header: 'x-per-page', param: 'perPageItems' },
       { header: 'x-total', param: 'totalItems' }
     ]
