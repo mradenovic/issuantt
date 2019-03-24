@@ -29,7 +29,7 @@ const getters = {
   getIssuesParams: (state, getters, rootState) => () => {
     const search = rootState.filter.search
     return {
-      per_page: 20,
+      per_page: rootState.pagination.perPageItems,
       q: search
     }
   },

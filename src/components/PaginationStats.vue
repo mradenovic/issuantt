@@ -1,7 +1,9 @@
 <template>
   <div>
     Page {{ page }} of {{ totaPages }} at
-    {{ perPageItems }}
+    <select v-model="perPageItems">
+      <option v-for="value in [10,20,50,75,100]" :value="value" :key="value">{{ value }}</option>
+    </select>
     items per page.
 
   </div>

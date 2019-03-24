@@ -54,14 +54,14 @@ const getters = {
   project (state, getters) {
     return getters.search.project
   },
-  getIssuesParams: (state, getters) => (search) => {
+  getIssuesParams: (state, getters, rootState) => (search) => {
     let q = { ...getters.search }
     delete q.user
     delete q.group
     delete q.project
 
     return {
-      per_page: 20,
+      per_page: rootState.pagination.perPageItems,
       ...q
     }
   },
