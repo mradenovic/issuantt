@@ -1,16 +1,17 @@
 <template>
   <div>
-    Page {{ page }} of {{ totaPages }} at
+    {{ firstTaskOrd }} - {{ lastTaskOrd }} of {{ totalItems }} tasks
+    on page {{ page }} of {{ totaPages }} at
     <select v-model="perPageItems">
       <option v-for="value in [10,20,50,75,100]" :value="value" :key="value">{{ value }}</option>
     </select>
-    items per page.
+    tasks per page.
 
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'pagination-stats',
@@ -20,6 +21,10 @@ export default {
       totaPages: state => state.totalPages,
       perPageItems: state => state.perPageItems,
       totalItems: state => state.totalItems
+    }),
+    ...mapGetters({
+      firstTaskOrd: 'pagination/firstTaskOrd',
+      lastTaskOrd: 'pagination/lastTaskOrd'
     }),
     perPageItems: {
       get () {

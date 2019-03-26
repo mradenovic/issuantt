@@ -27,6 +27,20 @@ const mutations = {
 }
 
 const getters = {
+  taskCount (state, getters, rootState) {
+    return rootState.issue.issues
+      ? rootState.issue.issues.length
+      : 0
+  },
+  firstTaskOrd (state, getters) {
+    const { perPageItems, page } = state
+    return (page - 1) * perPageItems + 1
+  },
+  lastTaskOrd (state, getters) {
+    const { perPageItems, page } = state
+    const { taskCount } = getters
+    return (page - 1) * perPageItems + taskCount
+  }
 }
 
 const actions = {
