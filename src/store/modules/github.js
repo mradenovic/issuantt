@@ -40,7 +40,10 @@ const getters = {
     return data.items
   },
   baseURL (state, getters, rootState) {
-    return 'https://api.github.com/'
+    const { url } = state
+    return url === 'https://github.com'
+      ? 'https://api.github.com/'
+      : `${url}/api/v3`
   },
   headers (state, getters, rootState) {
     return state.token

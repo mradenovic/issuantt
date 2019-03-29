@@ -16,7 +16,7 @@
       </div>
 
       <div class="level-item">
-        <input placeholder="Custom address" class="input" tabindex="1" v-model="providerURL" v-on:keyup.enter="signIn" v-bind:disabled="provider != 'gitlab'">
+        <input placeholder="Custom address" class="input" tabindex="1" v-model="providerURL" v-on:keyup.enter="signIn">
       </div>
     </div>
 
