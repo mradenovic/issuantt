@@ -27,6 +27,7 @@ export default new Vuex.Store({
       'gitlab',
       'github'
     ],
+    rememberMe: null,
     error: null,
     user: null,
     api: axios,
@@ -34,6 +35,9 @@ export default new Vuex.Store({
     provider: 'null'
   },
   mutations: {
+    rememberMe: function (state, value) {
+      state.rememberMe = value
+    },
     error: function (state, value) {
       state.error = value
     },
