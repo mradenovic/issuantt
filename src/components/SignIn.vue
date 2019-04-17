@@ -22,6 +22,10 @@
 
     <!-- Right side -->
     <div class="level-right">
+      <label class="checkbox level-item">
+        <input type="checkbox" v-model="rememberMe">
+        Remember me
+      </label>
       <p class="level-item"><a class="button is-info" @click="signIn">Sign In</a></p>
     </div>
   </nav>

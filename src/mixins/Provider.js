@@ -18,6 +18,14 @@ export default {
         this.$store.commit('providerToken', value)
       }
     },
+    rememberMe: {
+      get () {
+        return this.$store.state.rememberMe
+      },
+      set (value) {
+        this.$store.commit('rememberMe', value)
+      }
+    },
     ...mapState([
       'providers',
       'user',
