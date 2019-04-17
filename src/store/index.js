@@ -27,7 +27,7 @@ export default new Vuex.Store({
       'gitlab',
       'github'
     ],
-    hasLocalSotrage: typeof Storage !== 'undefined',
+    hasLocalStorage: typeof Storage !== 'undefined',
     rememberMe: null,
     error: null,
     user: null,
@@ -120,12 +120,31 @@ export default new Vuex.Store({
       commit('filter/projects', [])
       commit('issue/issues')
     },
+    setLocalSignInData ({ state, getters }) {
+      const { provider, hasLocalStorage, rememberMe } = state
+      const { providerURL, providerToken } = getters
+
+      if (hasLocalStorage) {
+        if (rememberMe) {
+          window.localStorage.provider = provider
+          window.localStorage.url = providerURL
+          window.localStorage.token = providerToken
+          window.localStorage.rememberMe = rememberMe
+        } else {
+          window.localStorage.removeItem('provider')
+          window.localStorage.removeItem('url')
+          window.localStorage.removeItem('token')
+          window.localStorage.removeItem('rememberMe')
+        }
+      }
+    },
     signIn ({ state, getters, commit, dispatch }) {
       const { baseURL, headers } = getters
 
       dispatch('setAPI', { baseURL, headers })
       state.api.get('/user')
         .then(response => {
+          dispatch('setLocalSignInData')
           commit('user', response.data)
         })
     },
