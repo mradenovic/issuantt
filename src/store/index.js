@@ -152,6 +152,8 @@ export default new Vuex.Store({
       const { baseURL } = getters
 
       commit('user', null)
+      commit('rememberMe', false)
+      dispatch('setLocalSignInData')
       dispatch('clearState')
       dispatch('setAPI', { baseURL })
     }
