@@ -27,6 +27,7 @@ export default new Vuex.Store({
       'gitlab',
       'github'
     ],
+    hasLocalSotrage: typeof Storage !== 'undefined',
     rememberMe: null,
     error: null,
     user: null,
