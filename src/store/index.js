@@ -111,9 +111,40 @@ export default new Vuex.Store({
       api.interceptors.response.use(onResponse, onResponseError)
       commit('api', api)
     },
+    initAPI ({ dispatch, getters }) {
+      const { baseURL } = getters
+
+      dispatch('setAPI', { baseURL })
+    },
+    authenticateAPI ({ dispatch, getters }) {
+      const { baseURL, headers } = getters
+
+      dispatch('setAPI', { baseURL, headers })
+    },
     setProvider ({ commit, dispatch }, provider) {
       dispatch('clearState')
       commit('provider', provider)
+      dispatch('initAPI')
+    },
+    initProvider ({ state, commit, dispatch, getters }) {
+      const { hasLocalStorage } = state
+
+      if (hasLocalStorage) {
+        const rememberMe = Boolean(window.localStorage.getItem('rememberMe') || false)
+
+        commit('rememberMe', rememberMe)
+
+        if (rememberMe) {
+          commit('provider', window.localStorage.getItem('provider'))
+          commit('providerURL', window.localStorage.getItem('url'))
+          commit('providerToken', window.localStorage.getItem('token'))
+          dispatch('signIn')
+        } else {
+          dispatch('setProvider', 'gitlab')
+        }
+      } else {
+        dispatch('setProvider', 'gitlab')
+      }
     },
     clearState ({ commit }) {
       commit('filter/project', null)
@@ -138,24 +169,20 @@ export default new Vuex.Store({
         }
       }
     },
-    signIn ({ state, getters, commit, dispatch }) {
-      const { baseURL, headers } = getters
-
-      dispatch('setAPI', { baseURL, headers })
+    signIn ({ state, commit, dispatch }) {
+      dispatch('authenticateAPI')
       state.api.get('/user')
         .then(response => {
           dispatch('setLocalSignInData')
           commit('user', response.data)
         })
     },
-    signOut ({ getters, commit, dispatch }) {
-      const { baseURL } = getters
-
+    signOut ({ commit, dispatch }) {
       commit('user', null)
       commit('rememberMe', false)
       dispatch('setLocalSignInData')
       dispatch('clearState')
-      dispatch('setAPI', { baseURL })
+      dispatch('initAPI')
     }
   }
 })

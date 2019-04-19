@@ -34,19 +34,12 @@ export default {
       'provider'
     ])
   },
-  watch: {
-    provider: function () {
-      this.signOut()
-    }
-  },
   methods: {
     ...mapActions([
       'setProvider',
+      'initProvider',
       'signIn',
       'signOut'
     ])
-  },
-  mounted () {
-    this.setProvider('gitlab')
   }
 }

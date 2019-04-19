@@ -38,6 +38,9 @@ export default {
   name: 'sign-in',
   mixins: [
     Provider
-  ]
+  ],
+  mounted () {
+    this.initProvider()
+  }
 }
 </script>
