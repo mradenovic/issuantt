@@ -32,13 +32,49 @@
 </template>
 
 <script>
-import Provider from '../mixins/Provider'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'sign-in',
-  mixins: [
-    Provider
-  ],
+  computed: {
+    providerURL: {
+      get () {
+        return this.$store.getters.providerURL
+      },
+      set (value) {
+        this.$store.commit('providerURL', value)
+      }
+    },
+    providerToken: {
+      get () {
+        return this.$store.getters.providerToken
+      },
+      set (value) {
+        this.$store.commit('providerToken', value)
+      }
+    },
+    rememberMe: {
+      get () {
+        return this.$store.state.rememberMe
+      },
+      set (value) {
+        this.$store.commit('rememberMe', value)
+      }
+    },
+    ...mapState([
+      'providers',
+      'user',
+      'loading',
+      'provider'
+    ])
+  },
+  methods: {
+    ...mapActions([
+      'initProvider',
+      'setProvider',
+      'signIn'
+    ])
+  },
   mounted () {
     this.initProvider()
   }
