@@ -31,12 +31,20 @@
 </template>
 
 <script>
-import Provider from '../mixins/Provider'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'sign-out',
-  mixins: [
-    Provider
-  ]
+  computed: {
+    ...mapState([
+      'user',
+      'provider'
+    ])
+  },
+  methods: {
+    ...mapActions([
+      'signOut'
+    ])
+  }
 }
 </script>
