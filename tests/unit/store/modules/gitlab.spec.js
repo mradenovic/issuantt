@@ -1,5 +1,4 @@
-import { getters } from '@/store/modules/gitlab'
-import { actions } from '@/store/modules/gitlab'
+import { getters, actions } from '@/store/modules/gitlab'
 
 describe('store.gitlab.getters', () => {
   const params = {
@@ -9,7 +8,7 @@ describe('store.gitlab.getters', () => {
 
   describe('projectFullName()', () => {
     it('should return project.path_with_namespace" if state.filter.project is defined', () => {
-      const rootState = { 
+      const rootState = {
         filter: {
           project: {
             path_with_namespace: 'issuantt/issuantt'
