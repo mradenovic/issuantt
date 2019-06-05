@@ -7,7 +7,7 @@ const state = {
 const mutations = {
 }
 
-const getters = {
+export const getters = {
   projectFullName (state, getters, rootState) {
     const project = rootState.filter.project
     return project
@@ -52,7 +52,7 @@ const getters = {
   }
 }
 
-const actions = {
+export const actions = {
   setPaginationStats ({ rootState, commit }, response) {
     const links = rootState.pagination.links
     const url = response.request.responseURL
