@@ -7,7 +7,7 @@ const state = {
 const mutations = {
 }
 
-const getters = {
+export const getters = {
   projectFullName (state, getters, rootState) {
     const project = rootState.filter.project
     return project
@@ -90,7 +90,7 @@ const getters = {
   }
 }
 
-const actions = {
+export const actions = {
   setPaginationStats ({ commit }, response) {
     const actions = [
       { header: 'x-page', param: 'page' },
