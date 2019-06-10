@@ -18,7 +18,7 @@ const mutations = {
   }
 }
 
-const getters = {
+export const getters = {
   fullName (state, getters, rootState, rootGetters) {
     return rootGetters[`${rootState.provider}/projectFullName`]
   },
@@ -33,8 +33,8 @@ const getters = {
   }
 }
 
-const actions = {
-  refreshProjects ({ state, rootState, getters, rootGetters, dispatch }, search) {
+export const actions = {
+  refreshProjects ({ state, rootState, getters, rootGetters, commit }, search) {
     // deconstruct geters
     const { getResponseItems } = rootGetters
     const { getURL, getParams } = getters
@@ -43,7 +43,7 @@ const actions = {
     rootState.api.get(getURL(search), { params: getParams(search) })
       .then(response => {
         const data = getResponseItems(response.data)
-        dispatch('setProjects', data)
+        commit('projects', data)
       })
   },
   setProjects ({ commit }, projects) {
