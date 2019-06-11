@@ -13,7 +13,7 @@ const mutations = {
   }
 }
 
-const getters = {
+export const getters = {
   params (state, getters, rootState, rootGetters) {
     return rootGetters[`${rootState.provider}/getIssuesParams`]('')
   },
@@ -22,7 +22,7 @@ const getters = {
   }
 }
 
-const actions = {
+export const actions = {
   refreshIssues ({ state, rootState, getters, rootGetters, dispatch, commit }, link) {
     // deconstruct geters
     const { url, params } = link
@@ -40,7 +40,7 @@ const actions = {
       .then(response => {
         const data = getResponseItems(response.data)
         dispatch('pagination/setAll', response, { root: true })
-        dispatch('setIssues', data)
+        commit('issues', data)
       })
   },
   setIssues ({ commit }, issues) {
