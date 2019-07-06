@@ -1,16 +1,16 @@
 {
   "name": "issuantt",
   "version": "0.1.0",
+  "private": false,
   "description": "An easy to use Gantt chart for GitLab and GitHub (and possibly Bitbucket) issues",
   "author": "mradenovic <miroslav.radenovic@gmail.com>",
-  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test:e2e": "vue-cli-service test:e2e",
-    "watch:unit": "vue-cli-service test:unit --watch",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "watch:unit": "vue-cli-service test:unit --watch"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -20,7 +20,9 @@
     "gantt-elastic": "^0.9.6",
     "vue": "^2.6.6",
     "vue-multiselect": "^2.1.4",
-    "vuex": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1",
+    "vuex-router-sync": "^5.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.4.0",
