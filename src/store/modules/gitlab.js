@@ -42,7 +42,7 @@ export const getters = {
     // regexp (key):(("value")|(value))
     const re = new RegExp('(\\S+?):(?:"(.+?)"\\s*|(\\S+))', 'g')
 
-    while ((match = re.exec(rootState.filter.search))) {
+    while ((match = re.exec(rootState.route.query.q))) {
       search[match[1]] = match[2] || match[3]
     }
 

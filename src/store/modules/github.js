@@ -27,7 +27,7 @@ export const getters = {
     return '/search/repositories'
   },
   getIssuesParams: (state, getters, rootState) => () => {
-    const search = rootState.filter.search
+    const search = rootState.route.query.q
     return {
       per_page: rootState.pagination.perPageItems,
       q: search
