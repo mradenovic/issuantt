@@ -19,6 +19,9 @@ const mockData = [
 
 const mockRootState = {
   provider: 'gitlab',
+  filter: {
+    search: ''
+  },
   api: {
     get: jest.fn().mockResolvedValue({ data: mockData })
   }

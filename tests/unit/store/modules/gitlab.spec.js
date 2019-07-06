@@ -51,9 +51,15 @@ describe('store.gitlab.getters', () => {
   })
 
   describe('search()', () => {
+    const search = 'group:issuantt project:issuantt/issuantt labels:"bug: critical" user:username milestone:"1.0 Release"'
     const rootState = {
+      route: {
+        query: {
+          q: search
+        }
+      },
       filter: {
-        search: 'group:issuantt project:issuantt/issuantt labels:"bug: critical" user:username milestone:"1.0 Release"'
+        search: search
       }
     }
 

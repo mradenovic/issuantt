@@ -46,6 +46,11 @@ describe('store.github.getters', () => {
     const perPageItems = 10
     const search = 'repo:issuantt/issuantt state:open'
     const rootState = {
+      route: {
+        query: {
+          q: search
+        }
+      },
       filter: {
         search: search
       },
