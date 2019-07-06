@@ -172,7 +172,7 @@ Currently, the following variables can be customized:
 ## Deployment
 
 If you fork the project on GitLab it will automaticaly deploy to [GitLab Pages](https://about.gitlab.com/product/pages/#step-3) at:
-`https://<your_namespace>.gitlab.io/issuant`
+`https://<your_namespace>.gitlab.io/issuantt`
 
 If you want to change that, check [GitLab Pages step 3](https://about.gitlab.com/product/pages/#step-3).
 
