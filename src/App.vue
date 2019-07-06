@@ -26,7 +26,7 @@
 
       <!-- Provider filter result -->
       <section class="content">
-        <Page />
+        <router-view/>
       </section>
     </main>
   </div>
@@ -41,7 +41,6 @@ import SignIn from './components/SignIn.vue'
 import SignOut from './components/SignOut.vue'
 import IssueFilter from './components/IssueFilter.vue'
 import Error from './components//Error.vue'
-import Page from './components/Page.vue'
 
 export default {
   name: 'app',
@@ -50,8 +49,7 @@ export default {
     SignIn,
     SignOut,
     IssueFilter,
-    Error,
-    Page
+    Error
   }
 }
 </script>
