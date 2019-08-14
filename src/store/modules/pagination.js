@@ -26,7 +26,7 @@ const mutations = {
   }
 }
 
-const getters = {
+export const getters = {
   taskCount (state, getters, rootState) {
     return rootState.issue.issues
       ? rootState.issue.issues.length
@@ -43,7 +43,7 @@ const getters = {
   }
 }
 
-const actions = {
+export const actions = {
   setAll ({ dispatch }, response) {
     dispatch('setLinks', response.headers['link'])
     dispatch('setStats', response)
