@@ -53,8 +53,8 @@ There some differences between them and the most important are listed in the tab
 |`group:issuantt` |`org:issuantt`|
 |`project:issuantt/issuantt` |`repo:issuantt/issuantt`|
 |`state:opened` |`state:open`|
-|`author_id:user_id` |`author:username`|
-|`assignee_id:user_id` |`assignee:username`|
+|`author_username:username` |`author:username`|
+|`assignee_username:username` |`assignee:username`|
 |`labels:bug,critical` |`label:bug label:critical`|
 
 ### Start and Due dates
