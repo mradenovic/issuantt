@@ -167,6 +167,7 @@ Currently, the following variables can be customized:
 |`VUE_APP_GITLAB_TOKEN`|`null`|GitLab Private Token or Personal Access Token|
 |`VUE_APP_GITHUB_URL`|`https://github.com`|GitHub Enterprise Instance (**not supported yet**)
 |`VUE_APP_GITHUB_TOKEN`|`null`|GitHub Personal Access Token|
+|`VUE_APP_GOOGLE_ANALYTICS_ID`|`null`|Google Analytics Tracking Id|
 
 
 ## Deployment
