@@ -1,7 +1,6 @@
-
 # Issuantt
 
-It's not an ant with an issue! It's an easy to use Gantt chart for GitLab and GithHub (and possibly Bitbucket) issues.
+It's not an ant with an issue! It's an easy to use Gantt chart for GitLab and GitHub (and possibly Bitbucket) issues.
 
 The demo is running at [https://issuantt.gitlab.io/issuantt](https://issuantt.gitlab.io/issuantt).
 
