@@ -105,6 +105,12 @@ Only your opened issues are displayed. If an issue due date is past, the issue i
 
 ## Project setup
 
+### Gitpod
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/<your-org>/<your-project>)
+
+### Local dev environment
+
 The project was created with [vue-cli 3](https://cli.vuejs.org/guide/) and requires [node 8](https://nodejs.org/en/) or higher. To setup dev environment run the following commands:
 
 ```bash
