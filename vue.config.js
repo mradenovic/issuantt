@@ -18,6 +18,9 @@ const publicPath = CI_PROJECT_NAME && CI_PROJECT_NAME.match(re)
   : CI_PROJECT_NAME
 
 module.exports = {
+  devServer: {
+      disableHostCheck: true
+  },
   publicPath: isProduction && publicPath
     ? publicPath
     : '/'

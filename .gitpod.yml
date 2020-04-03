@@ -1,0 +1,4 @@
+image: node:10
+tasks:
+  - init: npm install
+    command: npm run serve
