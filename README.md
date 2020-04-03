@@ -107,7 +107,7 @@ Only your opened issues are displayed. If an issue due date is past, the issue i
 
 ### Gitpod
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/<your-org>/<your-project>)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://gitlab.com/issuantt/issuant)
 
 ### Local dev environment
 
